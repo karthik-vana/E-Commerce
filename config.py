@@ -2,14 +2,25 @@
 config.py
 ─────────────────────────────────────────────────────────────────────
 Central, config-driven setup. All tunable values live here.
-Reads secrets from environment / .env so nothing is hardcoded.
+Reads secrets from Streamlit Cloud (st.secrets) or environment / .env.
 """
 
 import os
 from dataclasses import dataclass, field
 from dotenv import load_dotenv
 
-load_dotenv()  # Load .env file if present
+load_dotenv()  # Load .env file if present (local dev only)
+
+
+def _get_secret(key: str, default: str = "") -> str:
+    """Read a secret from Streamlit Cloud first, then fall back to env vars."""
+    try:
+        import streamlit as st
+        if key in st.secrets:
+            return str(st.secrets[key])
+    except Exception:
+        pass
+    return os.getenv(key, default)
 
 
 # ── Available Groq Models ──────────────────────────────────────────────────────
@@ -83,8 +94,8 @@ class AppConfig:
     APP_VERSION: str = "2.1"
 
     # ── Groq API ───────────────────────────────────────────────────
-    GROQ_API_KEY: str  = field(default_factory=lambda: os.getenv("GROQ_API_KEY", ""))
-    GROQ_MODEL:   str  = field(default_factory=lambda: os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"))
+    GROQ_API_KEY: str  = field(default_factory=lambda: _get_secret("GROQ_API_KEY", ""))
+    GROQ_MODEL:   str  = field(default_factory=lambda: _get_secret("GROQ_MODEL", "llama-3.3-70b-versatile"))
     GROQ_BASE_URL: str = "https://api.groq.com/openai/v1/chat/completions"
 
     # ── Generation defaults ─────────────────────────────────────────
@@ -102,7 +113,7 @@ class AppConfig:
     REQUEST_TIMEOUT: int   = 30
 
     # ── Logging ─────────────────────────────────────────────────────
-    LOG_LEVEL: str = field(default_factory=lambda: os.getenv("LOG_LEVEL", "INFO"))
+    LOG_LEVEL: str = field(default_factory=lambda: _get_secret("LOG_LEVEL", "INFO"))
     LOG_DIR:   str = "logs"
     LOG_FILE:  str = "logs/app.log"
 
