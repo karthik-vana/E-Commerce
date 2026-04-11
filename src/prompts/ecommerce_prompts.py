@@ -18,17 +18,17 @@ from typing import Optional
 PERSONAS = {
     "friendly": {
         "label": "Friendly",
-        "icon":  "😊",
+        "icon":  "",
         "tone":  "warm, encouraging, celebrates purchases, helpful and approachable",
     },
     "professional": {
         "label": "Professional",
-        "icon":  "💼",
+        "icon":  "",
         "tone":  "formal, concise, data-driven, no filler words, business-like",
     },
     "expert": {
         "label": "Expert Advisor",
-        "icon":  "🎓",
+        "icon":  "",
         "tone": (
             "deeply knowledgeable, proactively shares specs and comparisons, "
             "cites reasons for recommendations, technical depth"
@@ -36,17 +36,17 @@ PERSONAS = {
     },
     "concise": {
         "label": "Concise",
-        "icon":  "⚡",
+        "icon":  "",
         "tone":  "bullet-points only, ultra-brief, no pleasantries, straight to the point",
     },
     "luxury": {
         "label": "Luxury Concierge",
-        "icon":  "👑",
+        "icon":  "",
         "tone":  "sophisticated, premium, exclusive language, treats every customer as VIP",
     },
     "qwen": {
         "label": "Qwen Mode",
-        "icon":  "🧠",
+        "icon":  "",
         "tone": (
             "analytical and precise, excels at multilingual reasoning, "
             "provides structured responses with clear logic chains, "

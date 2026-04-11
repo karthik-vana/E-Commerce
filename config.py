@@ -29,68 +29,67 @@ GROQ_MODELS = {
         "label": "LLaMA 3.3 70B Versatile",
         "desc":  "Best overall — fast, smart, great for detailed answers",
         "ctx":   128000,
-        "icon":  "🦙",
+        "icon":  "",
     },
     "llama-3.1-8b-instant": {
         "label": "LLaMA 3.1 8B Instant",
         "desc":  "Ultra-fast responses, great for quick queries",
         "ctx":   131072,
-        "icon":  "⚡",
+        "icon":  "",
     },
     "qwen/qwen3-32b": {
         "label": "Qwen 3 32B",
         "desc":  "Alibaba's Qwen 3 — excellent reasoning and multilingual",
         "ctx":   32768,
-        "icon":  "🧠",
+        "icon":  "",
     },
     "openai/gpt-oss-safeguard-20b": {
         "label": "GPT OSS Safeguard 20B",
         "desc":  "OpenAI open-source — safety-focused, reliable responses",
         "ctx":   16384,
-        "icon":  "🛡️",
+        "icon":  "",
     },
     "moonshotai/kimi-k2-instruct-0905": {
         "label": "Kimi K2 Instruct",
         "desc":  "Moonshot AI — strong instruction following and creativity",
         "ctx":   131072,
-        "icon":  "🌙",
+        "icon":  "",
     },
     "gemma2-9b-it": {
         "label": "Gemma 2 9B IT",
         "desc":  "Google Gemma — instruction-tuned, solid performance",
         "ctx":   8192,
-        "icon":  "💎",
+        "icon":  "",
     },
     "mixtral-8x7b-32768": {
         "label": "Mixtral 8x7B",
         "desc":  "Mixture-of-Experts — balanced speed and quality",
         "ctx":   32768,
-        "icon":  "🔀",
+        "icon":  "",
     },
     "llama3-70b-8192": {
         "label": "LLaMA 3 70B",
         "desc":  "Powerful 70B model with 8K context",
         "ctx":   8192,
-        "icon":  "🦙",
+        "icon":  "",
     },
     "llama3-8b-8192": {
         "label": "LLaMA 3 8B",
         "desc":  "Lightweight and fast, good for simple queries",
         "ctx":   8192,
-        "icon":  "🏃",
+        "icon":  "",
     },
 }
 
 
 @dataclass
 class AppConfig:
-    # ── Identity ────────────────────────────────────────────────────
     APP_TITLE: str  = "ShopMind AI"
     APP_ICON:  str  = "sm"
     APP_DESC:  str  = "Your intelligent E-Commerce shopping assistant"
     BOT_NAME:  str  = "ShopMind"
-    BOT_AVATAR: str = "assistant"
-    USER_AVATAR: str = "user"
+    BOT_AVATAR: str = "assets/bot.svg"
+    USER_AVATAR: str = "assets/user.svg"
     APP_VERSION: str = "2.1"
 
     # ── Groq API ───────────────────────────────────────────────────

@@ -25,20 +25,20 @@ LANGUAGES = [
 ]
 
 RESPONSE_STYLES = {
-    "detailed": "📝 Detailed",
-    "concise":  "⚡ Concise",
-    "bullet":   "📋 Bullet Points",
+    "detailed": "Detailed",
+    "concise":  "Concise",
+    "bullet":   "Bullet Points",
 }
 
 QUICK_ACTIONS = [
-    ("🔥 Today's deals",        "flash-sale"),
-    ("📦 Track my order",        "tracking"),
-    ("↩️ Return policy",         "returns"),
-    ("⭐ Top rated products",    "top-rated"),
-    ("🎁 Gift ideas under $50",  "gifts"),
-    ("💳 Payment methods",       "payments"),
-    ("⚖️ Compare products",      "compare"),
-    ("🚚 Shipping info",         "shipping"),
+    ("Today's deals",        "flash-sale"),
+    ("Track my order",        "tracking"),
+    ("Return policy",         "returns"),
+    ("Top rated products",    "top-rated"),
+    ("Gift ideas under $50",  "gifts"),
+    ("Payment methods",       "payments"),
+    ("Compare products",      "compare"),
+    ("Shipping info",         "shipping"),
 ]
 
 
@@ -398,9 +398,9 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
 <div class="brand-header">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.8rem;">
     <div>
-      <h1 class="shop-header">🛍️ ShopMind AI</h1>
+      <h1 class="shop-header">ShopMind AI</h1>
       <p class="shop-sub">Your intelligent E-Commerce shopping assistant</p>
-      <div class="shop-badge">⚡ Powered by Groq LPU &middot; v{self.cfg.APP_VERSION}</div>
+      <div class="shop-badge">Powered by Groq LPU &middot; v{self.cfg.APP_VERSION}</div>
     </div>
     <div style="padding-top:0.3rem;">
       <span class="status-pill"><span class="status-dot"></span>Online</span>
@@ -410,7 +410,7 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
 """, unsafe_allow_html=True)
         with top_right:
             st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
-            if st.button("🗑️ Clear Chat", key="top_clear_chat", use_container_width=True):
+            if st.button("Clear Chat", key="top_clear_chat", use_container_width=True):
                 session_svc.reset()
                 st.rerun()
 
@@ -435,20 +435,20 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
 
     def render_sidebar(self, session_svc: SessionService) -> None:
         st.markdown(
-            '<div class="sidebar-heading">🛍️ ShopMind AI</div>',
+            '<div class="sidebar-heading">ShopMind AI</div>',
             unsafe_allow_html=True,
         )
         st.caption("Configure your shopping assistant")
         st.divider()
 
-        tab_settings, tab_tools, tab_about = st.tabs(["⚙️ Settings", "🔧 Tools", "ℹ️ About"])
+        tab_settings, tab_tools, tab_about = st.tabs(["Settings", "Tools", "About"])
 
         # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         #  TAB 1: Settings
         # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         with tab_settings:
             # ── Model Selection ────────────────────────────────────
-            st.markdown('<div class="sidebar-section">🤖 AI Model</div>', unsafe_allow_html=True)
+            st.markdown('<div class="sidebar-section">AI Model</div>', unsafe_allow_html=True)
             model_keys = list(GROQ_MODELS.keys())
             current_model = st.session_state.settings.get("model", self.cfg.GROQ_MODEL)
             if current_model not in model_keys:
@@ -474,7 +474,7 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
             st.markdown('<hr class="sidebar-divider">', unsafe_allow_html=True)
 
             # ── Persona & Language ─────────────────────────────────
-            st.markdown('<div class="sidebar-section">🎭 Persona & Language</div>', unsafe_allow_html=True)
+            st.markdown('<div class="sidebar-section">Persona & Language</div>', unsafe_allow_html=True)
             persona_key = st.selectbox(
                 "Bot Persona",
                 options=list(PERSONAS.keys()),
@@ -487,7 +487,7 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
             st.caption(f"_{PERSONAS[persona_key]['tone'][:80]}..._")
 
             language = st.selectbox(
-                "🌐 Response Language",
+                "Response Language",
                 LANGUAGES,
                 index=LANGUAGES.index(
                     st.session_state.settings.get("language", "English")
@@ -508,7 +508,7 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
             st.markdown('<hr class="sidebar-divider">', unsafe_allow_html=True)
 
             # ── Store Branding ─────────────────────────────────────
-            st.markdown('<div class="sidebar-section">🏪 Store Identity</div>', unsafe_allow_html=True)
+            st.markdown('<div class="sidebar-section">Store Identity</div>', unsafe_allow_html=True)
             store_name = st.text_input(
                 "Store Name",
                 value=st.session_state.settings.get("store_name", "ShopMind Store"),
@@ -526,7 +526,7 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
             st.markdown('<hr class="sidebar-divider">', unsafe_allow_html=True)
 
             # ── Generation Parameters ──────────────────────────────
-            with st.expander("🎛️ Advanced Parameters", expanded=False):
+            with st.expander("Advanced Parameters", expanded=False):
                 temperature = st.slider(
                     "Temperature",
                     min_value=0.0, max_value=2.0,
@@ -554,7 +554,7 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
                 session_svc.update_setting("top_p", top_p)
 
             # ── Safety & Memory ────────────────────────────────────
-            with st.expander("🛡️ Safety & Memory", expanded=False):
+            with st.expander("Safety & Memory", expanded=False):
                 few_shot = st.toggle(
                     "Few-shot examples",
                     value=st.session_state.settings.get("few_shot", True),
@@ -563,27 +563,27 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
                 session_svc.update_setting("few_shot", few_shot)
 
                 content_filter_status = "Active" if self.cfg.ENABLE_CONTENT_FILTER else "Disabled"
-                st.caption(f"🔒 Content filter: **{content_filter_status}**")
-                st.caption(f"📚 Max history turns: **{self.cfg.MAX_HISTORY_TURNS}**")
-                st.caption(f"⏱️ Rate limit: **{self.cfg.RATE_LIMIT_PER_MIN} req/min**")
+                st.caption(f"Content filter: **{content_filter_status}**")
+                st.caption(f"Max history turns: **{self.cfg.MAX_HISTORY_TURNS}**")
+                st.caption(f"Rate limit: **{self.cfg.RATE_LIMIT_PER_MIN} req/min**")
 
         # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         #  TAB 2: Tools
         # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         with tab_tools:
             # ── Session Stats ──────────────────────────────────────
-            st.markdown('<div class="sidebar-section">📊 Session Statistics</div>', unsafe_allow_html=True)
+            st.markdown('<div class="sidebar-section">Session Statistics</div>', unsafe_allow_html=True)
             stats = session_svc.get_stats()
             c1, c2, c3 = st.columns(3)
-            c1.metric("💬 Turns", stats["turns"])
-            c2.metric("📝 Words", stats["total_words"])
-            c3.metric("🆔 Session", stats["session_id"])
+            c1.metric("Turns", stats["turns"])
+            c2.metric("Words", stats["total_words"])
+            c3.metric("Session", stats["session_id"])
 
             # ── Response Time ──────────────────────────────────────
             if "last_response_time" in st.session_state:
                 rt = st.session_state.last_response_time
                 st.markdown(
-                    f'<div class="resp-time">⚡ Last response: {rt:.2f}s</div>',
+                    f'<div class="resp-time">Last response: {rt:.2f}s</div>',
                     unsafe_allow_html=True,
                 )
 
@@ -594,29 +594,38 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
 
             col_a, col_b = st.columns(2)
             with col_a:
-                if st.button("🗑️ Clear Chat", use_container_width=True, key="btn_clear"):
+                if st.button("Clear Chat", use_container_width=True, key="btn_clear"):
                     session_svc.reset()
                     st.rerun()
             with col_b:
-                if st.button("📥 Export Chat", use_container_width=True, key="btn_export"):
+                if st.button("Export Chat", use_container_width=True, key="btn_export"):
                     self._export_chat()
 
             st.markdown('<hr class="sidebar-divider">', unsafe_allow_html=True)
 
+            # ── Visual Search ──────────────────────────────────────────────
+            st.markdown('<div class="sidebar-section">Visual Search</div>', unsafe_allow_html=True)
+            st.caption("Upload a product image to find matches")
+            uploaded_file = st.file_uploader("Choose an image...", type=["png", "jpg", "jpeg"], key="visual_search")
+            if uploaded_file is not None:
+                st.success("Visual search indexing soon...")
+
+            st.markdown('<hr class="sidebar-divider">', unsafe_allow_html=True)
+
             # ── Quick Presets ──────────────────────────────────────
-            st.markdown('<div class="sidebar-section">⚡ Quick Presets</div>', unsafe_allow_html=True)
+            st.markdown('<div class="sidebar-section">Quick Presets</div>', unsafe_allow_html=True)
             st.caption("Apply optimised settings instantly")
 
             preset_cols = st.columns(2)
             with preset_cols[0]:
-                if st.button("🏃 Fast", use_container_width=True, key="preset_fast"):
+                if st.button("Fast", use_container_width=True, key="preset_fast"):
                     session_svc.update_setting("model", "llama-3.1-8b-instant")
                     session_svc.update_setting("temperature", 0.5)
                     session_svc.update_setting("max_tokens", 512)
                     session_svc.update_setting("response_style", "concise")
                     st.rerun()
             with preset_cols[1]:
-                if st.button("✨ Quality", use_container_width=True, key="preset_quality"):
+                if st.button("Quality", use_container_width=True, key="preset_quality"):
                     session_svc.update_setting("model", "llama-3.3-70b-versatile")
                     session_svc.update_setting("temperature", 0.7)
                     session_svc.update_setting("max_tokens", 2048)
@@ -625,14 +634,14 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
 
             preset_cols2 = st.columns(2)
             with preset_cols2[0]:
-                if st.button("🎓 Expert", use_container_width=True, key="preset_expert"):
+                if st.button("Expert", use_container_width=True, key="preset_expert"):
                     session_svc.update_setting("model", "llama-3.3-70b-versatile")
                     session_svc.update_setting("persona", "expert")
                     session_svc.update_setting("temperature", 0.4)
                     session_svc.update_setting("max_tokens", 2048)
                     st.rerun()
             with preset_cols2[1]:
-                if st.button("🧠 Qwen", use_container_width=True, key="preset_qwen"):
+                if st.button("Qwen", use_container_width=True, key="preset_qwen"):
                     session_svc.update_setting("model", "qwen/qwen3-32b")
                     session_svc.update_setting("persona", "qwen")
                     session_svc.update_setting("temperature", 0.6)
@@ -641,14 +650,14 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
 
             preset_cols3 = st.columns(2)
             with preset_cols3[0]:
-                if st.button("🎨 Creative", use_container_width=True, key="preset_creative"):
+                if st.button("Creative", use_container_width=True, key="preset_creative"):
                     session_svc.update_setting("model", "mixtral-8x7b-32768")
                     session_svc.update_setting("persona", "friendly")
                     session_svc.update_setting("temperature", 1.2)
                     session_svc.update_setting("max_tokens", 1024)
                     st.rerun()
             with preset_cols3[1]:
-                if st.button("🛡️ Safe", use_container_width=True, key="preset_safe"):
+                if st.button("Safe", use_container_width=True, key="preset_safe"):
                     session_svc.update_setting("model", "openai/gpt-oss-safeguard-20b")
                     session_svc.update_setting("persona", "professional")
                     session_svc.update_setting("temperature", 0.3)
@@ -658,7 +667,7 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
             st.markdown('<hr class="sidebar-divider">', unsafe_allow_html=True)
 
             # ── All Models Reference ───────────────────────────────
-            st.markdown('<div class="sidebar-section">📋 Available Models</div>', unsafe_allow_html=True)
+            st.markdown('<div class="sidebar-section">Available Models</div>', unsafe_allow_html=True)
             for model_id, info in GROQ_MODELS.items():
                 is_active = st.session_state.settings.get("model", self.cfg.GROQ_MODEL) == model_id
                 indicator = "●" if is_active else "○"
@@ -693,29 +702,29 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
 
             st.markdown("")
 
-            st.markdown('<div class="sidebar-section">✨ Key Features</div>', unsafe_allow_html=True)
+            st.markdown('<div class="sidebar-section">Key Features</div>', unsafe_allow_html=True)
             st.markdown("""
 <div>
-    <span class="feature-chip">🔍 Product Discovery</span>
-    <span class="feature-chip">📦 Order Tracking</span>
-    <span class="feature-chip">↩️ Returns & Refunds</span>
-    <span class="feature-chip">⚖️ Price Comparison</span>
-    <span class="feature-chip">🌐 14 Languages</span>
-    <span class="feature-chip">🎭 6 Personas</span>
-    <span class="feature-chip">🤖 9 AI Models</span>
-    <span class="feature-chip">⚡ Quick Presets</span>
-    <span class="feature-chip">📥 Chat Export</span>
-    <span class="feature-chip">🛡️ Content Safety</span>
-    <span class="feature-chip">⏱️ Response Timer</span>
-    <span class="feature-chip">📊 Session Stats</span>
-    <span class="feature-chip">🧠 Qwen Mode</span>
-    <span class="feature-chip">🗑️ Quick Clear</span>
+    <span class="feature-chip">Product Discovery</span>
+    <span class="feature-chip">Order Tracking</span>
+    <span class="feature-chip">Returns & Refunds</span>
+    <span class="feature-chip">Price Comparison</span>
+    <span class="feature-chip">14 Languages</span>
+    <span class="feature-chip">6 Personas</span>
+    <span class="feature-chip">9 AI Models</span>
+    <span class="feature-chip">Quick Presets</span>
+    <span class="feature-chip">Chat Export</span>
+    <span class="feature-chip">Content Safety</span>
+    <span class="feature-chip">Response Timer</span>
+    <span class="feature-chip">Session Stats</span>
+    <span class="feature-chip">Qwen Mode</span>
+    <span class="feature-chip">Quick Clear</span>
 </div>
 """, unsafe_allow_html=True)
 
             st.markdown("")
 
-            st.markdown('<div class="sidebar-section">🔧 Tech Stack</div>', unsafe_allow_html=True)
+            st.markdown('<div class="sidebar-section">Tech Stack</div>', unsafe_allow_html=True)
             st.markdown("""
 <div>
     <span class="tech-badge">Python 3.11+</span>
@@ -734,20 +743,20 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
             st.markdown('<div class="sidebar-section">🏗️ Architecture</div>', unsafe_allow_html=True)
             st.markdown("""
 <div class="about-text" style="font-size:0.8rem;">
-    <strong>🧩 Modular Design</strong> — Clean separation across service layers,
+    <strong>Modular Design</strong> — Clean separation across service layers,
     API clients, prompt engineering, UI components, security, and logging.<br/><br/>
-    <strong>🛡️ Security</strong> — Input sanitisation, prompt injection defence,
+    <strong>Security</strong> — Input sanitisation, prompt injection defence,
     rate limiting, and domain-scoped content filtering.<br/><br/>
-    <strong>🔄 Resilience</strong> — Exponential retry with back-off, graceful
+    <strong>Resilience</strong> — Exponential retry with back-off, graceful
     fallbacks, and structured error handling.<br/><br/>
-    <strong>⚡ Performance</strong> — Client caching, minimal re-renders,
+    <strong>Performance</strong> — Client caching, minimal re-renders,
     dynamic model switching, and Groq LPU for sub-second inference.
 </div>
 """, unsafe_allow_html=True)
 
             st.markdown("")
 
-            st.markdown('<div class="sidebar-section">👤 Credits</div>', unsafe_allow_html=True)
+            st.markdown('<div class="sidebar-section">Credits</div>', unsafe_allow_html=True)
             st.markdown("""
 <div class="about-text" style="font-size:0.8rem;">
     A full-stack GenAI project showcasing modern conversational AI,
@@ -760,7 +769,7 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
         st.markdown(
             '<div class="sidebar-footer">'
             '<strong>ShopMind AI</strong> v2.1<br/>'
-            '⚡ Powered by Groq LPU Inference'
+            'Powered by Groq LPU Inference'
             '</div>',
             unsafe_allow_html=True,
         )
@@ -821,7 +830,7 @@ hr { border-color: rgba(99, 102, 241, 0.08) !important; margin: 1.2rem 0 !import
             prefix = "You" if m["role"] == "user" else "ShopMind"
             lines.append(f"[{prefix}]\n{m['content']}\n")
         st.download_button(
-            label="📥 Download .txt",
+            label="Download .txt",
             data="\n".join(lines),
             file_name="shopmind_chat.txt",
             mime="text/plain",

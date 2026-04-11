@@ -22,7 +22,7 @@ cfg    = AppConfig()
 
 st.set_page_config(
     page_title=cfg.APP_TITLE,
-    page_icon="🛍️",
+    page_icon="sm",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -73,7 +73,7 @@ if prompt:
             st.session_state.last_response_time = elapsed
         st.markdown(response_text)
         st.markdown(
-            f'<div class="resp-time">⚡ {elapsed:.2f}s</div>',
+            f'<div class="resp-time">{elapsed:.2f}s</div>',
             unsafe_allow_html=True,
         )
 
