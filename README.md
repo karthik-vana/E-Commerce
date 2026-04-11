@@ -11,6 +11,10 @@
 
 </div>
 
+# 🛒 ShopMind AI – E‑Commerce App
+
+🔗 **Live Demo:** [https://e-commerce1.streamlit.app](https://e-commerce1.streamlit.app)
+
 ---
 
 ## ✨ Overview
