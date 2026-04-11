@@ -8,6 +8,7 @@ Handles Streamlit session-state lifecycle:
 • Settings persistence
 """
 
+import copy
 import uuid
 import streamlit as st
 from datetime import datetime
@@ -44,7 +45,7 @@ class SessionService:
 
         for key, value in self.DEFAULTS.items():
             if key not in st.session_state:
-                st.session_state[key] = value
+                st.session_state[key] = copy.deepcopy(value)
 
     def reset(self) -> None:
         """Clear conversation history but preserve settings."""
